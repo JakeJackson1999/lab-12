@@ -185,7 +185,12 @@ public class DataEntryFrame extends JFrame
 		JButton saveForm = new JButton("Save");
 		saveForm.addActionListener((e) -> {
 			int select = formSelect.getSelectedIndex();
-
+			
+			//FormData input = new FormData();
+			datalist.setValues(firstName.getText(), middleInitial.getText().charAt(0), lastName.getText(), displayName.getText(),
+					SSN.getText(), phone.getText(), email.getText(), address.getText(), spanel.getSignature());
+			//datalist.add(input);
+			
 			// TODO: use the JTextFields and the signature panel to set the values
 			// of the selected FormData object.
 
@@ -204,7 +209,10 @@ public class DataEntryFrame extends JFrame
 			this.setVisuals(datalist.get(select));
 		});
 
-		// TODO: add buttons to panel and add to frame
+		formHandling.add(createForm);
+		formHandling.add(saveForm);
+		formHandling.add(resetForm);
+		this.add(formHandling);// TODO: add buttons to panel and add to frame
 
 		// Add in the error message field:
 		this.errorField.setEditable(false);
