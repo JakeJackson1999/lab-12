@@ -95,7 +95,14 @@ public class DataEntryFrame extends JFrame
 	 */
 	private void setVisuals(FormData data)
 	{
-		// TODO: set the text fields and the signature as corresponding to the fields in FormData.
+		firstName.setText(data.getFirstName());
+		middleInitial.setText(data.getMiddleInitial()+"");
+		lastName.setText(data.getLastName());
+		displayName.setText(data.getDisplayName());
+		SSN.setText(data.getSSN());
+		phone.setText(data.getPhone());
+		email.setText(data.getEmail());
+		address.setText(data.getAddress());// TODO: set the text fields and the signature as corresponding to the fields in FormData.
 	}
 
 	/**
@@ -124,8 +131,23 @@ public class DataEntryFrame extends JFrame
 		this.add(formSelect);
 
 		// TODO: add in all form-fillable components:
-		JPanel formFill = new JPanel(/* TODO: add layout manager */);
-		// TODO: add to panel...
+		JPanel formFill = new JPanel(new GridLayout(8, 2));
+		formFill.add(firstNameInfo);
+		formFill.add(firstName);
+		formFill.add(midddleInitialInfo);
+		formFill.add(middleInitial);
+		formFill.add(lastNameInfo);
+		formFill.add(lastName);
+		formFill.add(displayNameInfo);
+		formFill.add(displayName);
+		formFill.add(SSNInfo);
+		formFill.add(SSN);
+		formFill.add(phoneInfo);
+		formFill.add(phone);
+		formFill.add(emailInfo);
+		formFill.add(email);
+		formFill.add(addressInfo);
+		formFill.add(address);// TODO: add to panel...
 		this.add(formFill);
 
 		// Add in the signature panel:
@@ -137,7 +159,9 @@ public class DataEntryFrame extends JFrame
 			@Override
 			public void mouseDragged(MouseEvent e)
 			{
-				// TODO: add a point to the panel on drag and repaint.
+				spanel.addPoint(e.getPoint());
+				System.out.println("Adding point...");
+				spanel.repaint();// TODO: add a point to the panel on drag and repaint.
 			}
 		});
 		this.add(signatureInfo);
