@@ -186,10 +186,10 @@ public class DataEntryFrame extends JFrame
 		saveForm.addActionListener((e) -> {
 			int select = formSelect.getSelectedIndex();
 			
-			//FormData input = new FormData();
-			datalist.setValues(firstName.getText(), middleInitial.getText().charAt(0), lastName.getText(), displayName.getText(),
+			FormData input = new FormData();
+			input.setValues(firstName.getText(), middleInitial.getText().charAt(0), lastName.getText(), displayName.getText(),
 					SSN.getText(), phone.getText(), email.getText(), address.getText(), spanel.getSignature());
-			//datalist.add(input);
+			datalist.add(input);
 			
 			// TODO: use the JTextFields and the signature panel to set the values
 			// of the selected FormData object.
@@ -205,7 +205,11 @@ public class DataEntryFrame extends JFrame
 		JButton resetForm = new JButton("Reset");
 		resetForm.addActionListener((e) -> {
 			int select = formSelect.getSelectedIndex();
-			// TODO: reset the values on the selected form data
+			spanel.clear();
+			FormData reset = new FormData();
+			reset.setValues("fn", 'm', "ln", "dn", "111111111", "1234567890",
+					"test@ou.edu", "111 first st", new ArrayList<Point>());
+			datalist.add(reset);// TODO: reset the values on the selected form data
 			this.setVisuals(datalist.get(select));
 		});
 
